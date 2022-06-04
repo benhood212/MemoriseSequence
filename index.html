@@ -5,7 +5,22 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        
+        <h1>Memorise Sequence</h1>
+        <div id="scoreSection">
+            <p id="score">Score: </p>
+            <p id="highScore">High Score: </p>
+            <p id="gameOverBox"></p>
+        </div>
+        <div id="controlSection">
+            <button id="startGame" onclick="startGame()">Start Game</button>
+        </div>
+        <div id="buttonSection">
+            <button id="red" onclick="redClicked()" class="colourButton">Red</button>
+            <button id="green" onclick="greenClicked()" class="colourButton">Green</button>
+            <button id="yellow" onclick="yellowClicked()" class="colourButton">Yellow</button>
+            <button id="blue" onclick="blueClicked()" class="colourButton">Blue</button>
+        </div>
+
         <script src="game.js"></script>
     </body>
 </html>

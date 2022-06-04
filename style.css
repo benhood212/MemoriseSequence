@@ -1,0 +1,35 @@
+#red {
+    background-color: lightcoral;
+}
+
+#green {
+    background-color: lightgreen;
+}
+
+#yellow {
+    background-color: lightyellow;
+}
+
+#blue {
+    background-color: lightblue;
+}
+
+#red-active {
+    background-color: red;
+    color: white;
+}
+
+#green-active {
+    background-color: green;
+    color: white;
+}
+
+#yellow-active {
+    background-color: yellow;
+    color: white;
+}
+
+#blue-active {
+    background-color: blue;
+    color: white;
+}
