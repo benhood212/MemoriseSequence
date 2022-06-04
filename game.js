@@ -36,16 +36,6 @@ function lightColour(colour){
     setTimeout(() => document.getElementById(colour+"-active").setAttribute("id",colour),1000);
 }
 
-function buttonHover(colour){
-    if(!disableButtons){
-        document.getElementById(colour).style.borderWidth = "5px";
-    }
-}
-
-function deleteBorder(colour){
-    document.getElementById(colour).style.borderWidth = "2px";
-}
-
 function colourClicked(colour){
     if(!disableButtons){
         userSequence.push(colour);
