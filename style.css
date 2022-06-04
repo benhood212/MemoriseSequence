@@ -6,6 +6,18 @@
     text-align: center;
 }
 
+@media screen and (min-width: 767px) {
+    #mainContainer {
+        width: 100%;
+    }
+
+    .colourButton {
+        width: 20%;
+        height: 20%;
+        margin: 2%;
+    }
+}
+
 /* button sizes */
 .colourButton {
     width: 100px;
