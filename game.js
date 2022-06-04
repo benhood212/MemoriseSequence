@@ -6,6 +6,8 @@ let gameRunning = false;
 let selectionDone = true;
 let highScore = 0;
 
+let disableButtons = true;
+
 if(localStorage.highScoreStorage) {
     highScore = parseInt(localStorage.highScoreStorage);
     document.getElementById("highScore").innerHTML = "High Score: " + highScore;
@@ -43,28 +45,40 @@ function lightBlue(){
 
 
 function redClicked(){
-    userSequence.push("red");
+    if(!disableButtons) {
+        userSequence.push("red");
+    }
 }
 
 function greenClicked(){
-    userSequence.push("green");
+    if(!disableButtons) {
+        userSequence.push("green");
+    }
 }
 
 function yellowClicked(){
-    userSequence.push("yellow");
+    if(!disableButtons) {
+        userSequence.push("yellow");
+    }
 }
 
 function blueClicked(){
-    userSequence.push("blue");
+    if(!disableButtons) {
+        userSequence.push("blue");
+    }
+}
+
+function enableButton(){
+    disableButtons = false;
 }
 
 function showOneElement(colour){
+    setTimeout(() => enableButton(),generatedSequence.length * 1400);
     switch(colour){
         case "red": setTimeout(() => lightRed(),showLoopCounter * 1500);break;
         case "green": setTimeout(() => lightGreen(),showLoopCounter * 1500);break;
         case "yellow": setTimeout(() => lightYellow(),showLoopCounter * 1500);break;
-        case "blue": setTimeout(() => lightBlue(),showLoopCounter * 1500);break;
-        
+        case "blue": setTimeout(() => lightBlue(),showLoopCounter * 1500);break;   
     }
 }
 
@@ -104,10 +118,10 @@ function gameLoop() {
     }
 
     if(userSequence.length == generatedSequence.length && generatedSequence.length != 0 && gameRunning){
-        score = userSequence.length;
-        document.getElementById("score").innerHTML = "Score: " + score;
+        disableButtons = true;
         if(gameRunning) {
             score++;
+            document.getElementById("score").innerHTML = "Score: " + score;
             generatedSequence.push(generateRandomColour());
             userSequence = new Array();
             selectionDone = true;
