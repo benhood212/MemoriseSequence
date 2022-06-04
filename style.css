@@ -1,3 +1,17 @@
+#mainContainer {
+    font-family: sans-serif;
+    margin: 0 auto;
+    width: 75%;
+    text-align: center;
+}
+
+.colourButton {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
 #red {
     background-color: lightcoral;
 }
