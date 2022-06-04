@@ -12,6 +12,10 @@
     border-radius: 10px;
 }
 
+#commandDisplay {
+    color: green;
+}
+
 #red {
     background-color: lightcoral;
 }

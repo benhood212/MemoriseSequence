@@ -127,7 +127,14 @@ function gameLoop() {
             selectionDone = true;
         }
     }
-    
+    if(gameRunning) {
+        if(disableButtons){
+            document.getElementById("commandDisplay").innerHTML = "Memorise!";
+        }
+        else {
+            document.getElementById("commandDisplay").innerHTML = "Guess!"
+        }
+    }
 }
 
 function startGame() {
@@ -140,7 +147,7 @@ function startGame() {
     showLoopCounter = 0;
 
     document.getElementById("score").innerHTML = "Score: 0";
-    document.getElementById("gameOverBox").innerHTML = "";
+    document.getElementById("commandDisplay").style.color = "green";
 
     generatedSequence.push(generateRandomColour());
     gameRunning=true;
@@ -155,6 +162,7 @@ function gameOver() {
         localStorage.highScoreStorage = highScore;
     }
     document.getElementById("highScore").innerHTML = "High Score: " + highScore;
-    document.getElementById("gameOverBox").innerHTML = "Game Over";
+    document.getElementById("commandDisplay").innerHTML = "Game Over!";
+    document.getElementById("commandDisplay").style.color = "red";
 
 }
