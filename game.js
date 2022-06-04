@@ -122,7 +122,7 @@ function startGame() {
     selectionDone = true;
     showLoopCounter = 0;
 
-    document.getElementById("score") = "Score: 0";
+    document.getElementById("score").innerHTML = "Score: 0";
     document.getElementById("gameOverBox").innerHTML = "";
 
     generatedSequence.push(generateRandomColour());
