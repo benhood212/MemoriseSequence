@@ -10,6 +10,11 @@ let disableButtons = true;
 
 if(localStorage.highScoreStorage) {
     highScore = parseInt(localStorage.highScoreStorage);
+    setDisplays();
+}
+
+function setDisplays() {
+    document.getElementById("score").innerHTML = "Score: " + score;
     document.getElementById("highScore").innerHTML = "High Score: " + highScore;
 }
 
@@ -23,24 +28,9 @@ function generateRandomColour(){
     }
 }
 
-function lightRed(){
-    document.getElementById("red").setAttribute("id","red-active");
-    setTimeout(() => {document.getElementById("red-active").setAttribute("id","red")},1000)
-}
-
-function lightGreen(){
-    document.getElementById("green").setAttribute("id","green-active");
-    setTimeout(() => {document.getElementById("green-active").setAttribute("id","green")},1000)
-}
-
-function lightYellow(){
-    document.getElementById("yellow").setAttribute("id","yellow-active");
-    setTimeout(() => {document.getElementById("yellow-active").setAttribute("id","yellow")},1000)
-}
-
-function lightBlue(){
-    document.getElementById("blue").setAttribute("id","blue-active");
-    setTimeout(() => {document.getElementById("blue-active").setAttribute("id","blue")},1000)
+function lightColour(colour){
+    document.getElementById(colour).setAttribute("id",colour+"-active");
+    setTimeout(() => document.getElementById(colour+"-active").setAttribute("id",colour),1000);
 }
 
 function buttonHover(colour){
@@ -53,29 +43,12 @@ function deleteBorder(colour){
     document.getElementById(colour).style.borderWidth = "2px";
 }
 
-function redClicked(){
-    if(!disableButtons) {
-        userSequence.push("red");
+function colourClicked(colour){
+    if(!disableButtons){
+        userSequence.push(colour);
     }
 }
 
-function greenClicked(){
-    if(!disableButtons) {
-        userSequence.push("green");
-    }
-}
-
-function yellowClicked(){
-    if(!disableButtons) {
-        userSequence.push("yellow");
-    }
-}
-
-function blueClicked(){
-    if(!disableButtons) {
-        userSequence.push("blue");
-    }
-}
 
 function enableButton(){
     disableButtons = false;
@@ -87,12 +60,7 @@ function disableButton(){
 
 function showOneElement(colour){
     setTimeout(() => enableButton(),generatedSequence.length * 1400);
-    switch(colour){
-        case "red": setTimeout(() => lightRed(),showLoopCounter * 1500);break;
-        case "green": setTimeout(() => lightGreen(),showLoopCounter * 1500);break;
-        case "yellow": setTimeout(() => lightYellow(),showLoopCounter * 1500);break;
-        case "blue": setTimeout(() => lightBlue(),showLoopCounter * 1500);break;   
-    }
+    setTimeout(() => lightColour(colour),showLoopCounter * 1500);
 }
 
 let showLoopCounter = 0;
@@ -125,22 +93,22 @@ function gameLoop() {
         }
     }
 
-    if(selectionDone==true && gameRunning) {
-        showLoop();
-        showLoopCounter = 0;
-    }
-
-    if(userSequence.length == generatedSequence.length && generatedSequence.length != 0 && gameRunning){
-        disableButton();
-        if(gameRunning) {
-            score++;
-            document.getElementById("score").innerHTML = "Score: " + score;
-            generatedSequence.push(generateRandomColour());
-            userSequence = new Array();
-            selectionDone = true;
-        }
-    }
     if(gameRunning) {
+        if(selectionDone==true) {
+            showLoop();
+            showLoopCounter = 0;
+        }
+    
+        if(userSequence.length == generatedSequence.length && generatedSequence.length != 0){
+            disableButton();
+            if(gameRunning) {
+                score++;
+                generatedSequence.push(generateRandomColour());
+                userSequence = new Array();
+                selectionDone = true;
+            }
+        }
+
         if(disableButtons){
             document.getElementById("commandDisplay").innerHTML = "Memorise!";
         }
@@ -148,6 +116,7 @@ function gameLoop() {
             document.getElementById("commandDisplay").innerHTML = "Guess!"
         }
     }
+    setDisplays();
 }
 
 function startGame() {
@@ -158,8 +127,6 @@ function startGame() {
     gameRunning = false;
     selectionDone = true;
     showLoopCounter = 0;
-
-    document.getElementById("score").innerHTML = "Score: 0";
     document.getElementById("commandDisplay").style.color = "green";
 
     generatedSequence.push(generateRandomColour());
@@ -168,13 +135,12 @@ function startGame() {
 }
 
 function gameOver() {
-    document.getElementById("score").innerHTML = "Score: " + score;
 
     if(score > highScore) {
         highScore = score;
         localStorage.highScoreStorage = highScore;
     }
-    document.getElementById("highScore").innerHTML = "High Score: " + highScore;
+    setDisplays();
     document.getElementById("commandDisplay").innerHTML = "Game Over!";
     disableButton();
     document.getElementById("commandDisplay").style.color = "red";
