@@ -95,12 +95,12 @@ function gameLoop() {
         }
     }
 
-    if(selectionDone==true) {
+    if(selectionDone==true && gameRunning) {
         showLoop();
         showLoopCounter = 0;
     }
 
-    if(userSequence.length == generatedSequence.length && generatedSequence.length != 0){
+    if(userSequence.length == generatedSequence.length && generatedSequence.length != 0 && gameRunning){
         score = userSequence.length;
         document.getElementById("score").innerHTML = "Score: " + score;
         if(gameRunning) {
@@ -137,7 +137,6 @@ function gameOver() {
         highScore = score;
     }
     document.getElementById("highScore").innerHTML = "High Score: " + highScore;
-
     document.getElementById("gameOverBox").innerHTML = "Game Over";
-    score = 0;
+
 }
