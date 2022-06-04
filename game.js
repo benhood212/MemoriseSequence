@@ -5,6 +5,7 @@ let score = 0;
 let gameRunning = false;
 let selectionDone = true;
 
+let highScore = 0;
 
 function generateRandomColour(){
     randomNumber = Math.floor(Math.random() * 4);
@@ -17,25 +18,21 @@ function generateRandomColour(){
 }
 
 function lightRed(){
-    console.log("red");
     document.getElementById("red").setAttribute("id","red-active");
     setTimeout(() => {document.getElementById("red-active").setAttribute("id","red")},1000)
 }
 
 function lightGreen(){
-    console.log("green");
     document.getElementById("green").setAttribute("id","green-active");
     setTimeout(() => {document.getElementById("green-active").setAttribute("id","green")},1000)
 }
 
 function lightYellow(){
-    console.log("yellow");
     document.getElementById("yellow").setAttribute("id","yellow-active");
     setTimeout(() => {document.getElementById("yellow-active").setAttribute("id","yellow")},1000)
 }
 
 function lightBlue(){
-    console.log("blue");
     document.getElementById("blue").setAttribute("id","blue-active");
     setTimeout(() => {document.getElementById("blue-active").setAttribute("id","blue")},1000)
 }
@@ -70,7 +67,6 @@ function showOneElement(colour){
 let showLoopCounter = 0;
 
 function showLoopIteration(){
-    console.log("show loop iteration");
     showOneElement(generatedSequence[showLoopCounter]);
     if(showLoopCounter<generatedSequence.length){
         showLoopCounter++;
@@ -90,10 +86,17 @@ function gameLoop() {
         window.setTimeout(gameLoop,1000);
     }
 
-    if(selectionDone==true) {
-        console.log("showing sequence");
-        showLoop();
+    for(i=0;i<userSequence.length;i++){
+        console.log("Comparing " + generatedSequence[i] + " and " +  userSequence[i]);
+        if(generatedSequence[i] != userSequence[i]){
+            gameRunning = false;
+            gameOver();
+            break;
+        }
+    }
 
+    if(selectionDone==true) {
+        showLoop();
         showLoopCounter = 0;
     }
 
@@ -107,14 +110,7 @@ function gameLoop() {
             selectionDone = true;
         }
     }
-
-    for(i=0;i<userSequence.length;i++){
-        if(generatedSequence[i] != userSequence[i]){
-            gameRunning = false;
-            gameOver();
-            break;
-        }
-    }
+    
 }
 
 function startGame() {
@@ -125,6 +121,8 @@ function startGame() {
     gameRunning = false;
     selectionDone = true;
     showLoopCounter = 0;
+
+    document.getElementById("score") = "Score: 0";
     document.getElementById("gameOverBox").innerHTML = "";
 
     generatedSequence.push(generateRandomColour());
@@ -133,7 +131,13 @@ function startGame() {
 }
 
 function gameOver() {
-    score = score - 1;
     document.getElementById("score").innerHTML = "Score: " + score;
+
+    if(score > highScore) {
+        highScore = score;
+    }
+    document.getElementById("highScore").innerHTML = "High Score: " + highScore;
+
     document.getElementById("gameOverBox").innerHTML = "Game Over";
+    score = 0;
 }
