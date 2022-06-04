@@ -12,8 +12,17 @@
     border-radius: 10px;
 }
 
+.colourButtonEnabled:hover {
+    border-color: red;
+}
+
 #commandDisplay {
     color: green;
+}
+
+#startGame {
+    width: 150px;
+    height: 50px;
 }
 
 #red {

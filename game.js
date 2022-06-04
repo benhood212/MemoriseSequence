@@ -69,7 +69,19 @@ function blueClicked(){
 }
 
 function enableButton(){
+    let colourButtons = document.getElementsByClassName("colourButton");
+    for(int=0;i<colourButtons.length;i++){
+        colourButtons[i].setAttribute("class","colourButton colourButtonEnabled");
+    }
     disableButtons = false;
+}
+
+function disableButton(){
+    let colourButtons = document.getElementsByClassName("colourButton");
+    for(int=0;i<colourButtons.length;i++){
+        colourButtons[i].setAttribute("class","colourButton");
+    }
+    disableButtons = true;
 }
 
 function showOneElement(colour){
@@ -118,7 +130,7 @@ function gameLoop() {
     }
 
     if(userSequence.length == generatedSequence.length && generatedSequence.length != 0 && gameRunning){
-        disableButtons = true;
+        disableButton();
         if(gameRunning) {
             score++;
             document.getElementById("score").innerHTML = "Score: " + score;
@@ -163,6 +175,7 @@ function gameOver() {
     }
     document.getElementById("highScore").innerHTML = "High Score: " + highScore;
     document.getElementById("commandDisplay").innerHTML = "Game Over!";
+    disableButton();
     document.getElementById("commandDisplay").style.color = "red";
 
 }
