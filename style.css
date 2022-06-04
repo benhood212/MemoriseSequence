@@ -1,3 +1,4 @@
+/* center all elements */
 #mainContainer {
     font-family: sans-serif;
     margin: 0 auto;
@@ -5,6 +6,7 @@
     text-align: center;
 }
 
+/* button sizes */
 .colourButton {
     width: 100px;
     height: 100px;
@@ -12,16 +14,18 @@
     border-radius: 10px;
 }
 
-
-#commandDisplay {
-    color: green;
-}
-
 #startGame {
     width: 150px;
     height: 50px;
 }
 
+/* command display styling */
+#commandDisplay {
+    color: green;
+}
+
+
+/* css for game to function */
 #red {
     background-color: lightcoral;
 }

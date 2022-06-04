@@ -9,6 +9,7 @@ let highScore = 0;
 let disableButtons = true;
 
 if(localStorage.highScoreStorage) {
+    // retrieve highscore from storage, and update displays
     highScore = parseInt(localStorage.highScoreStorage);
     setDisplays();
 }
@@ -29,6 +30,7 @@ function generateRandomColour(){
 }
 
 function lightColour(colour){
+    // temporarily change css to show which colours are in sequence
     document.getElementById(colour).setAttribute("id",colour+"-active");
     setTimeout(() => document.getElementById(colour+"-active").setAttribute("id",colour),1000);
 }
@@ -48,7 +50,6 @@ function colourClicked(colour){
         userSequence.push(colour);
     }
 }
-
 
 function enableButton(){
     disableButtons = false;
@@ -77,7 +78,6 @@ function showLoopIteration(){
 
 function showLoop(){
     window.setTimeout(showLoopIteration(),1000);
-
 }
 
 function gameLoop() {
@@ -86,10 +86,10 @@ function gameLoop() {
     }
 
     for(i=0;i<userSequence.length;i++){
+        // check if player has lost game
         if(generatedSequence[i] != userSequence[i]){
             gameRunning = false;
             gameOver();
-            break;
         }
     }
 
