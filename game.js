@@ -32,6 +32,7 @@ function generateRandomColour(){
 function lightColour(colour){
     // temporarily change css to show which colours are in sequence
     document.getElementById(colour).setAttribute("id",colour+"-active");
+    console.log(colour+"-active");  
     setTimeout(() => document.getElementById(colour+"-active").setAttribute("id",colour),1000);
 }
 
@@ -59,25 +60,25 @@ function disableButton(){
     disableButtons = true;
 }
 
-function showOneElement(colour){
-    setTimeout(() => enableButton(),generatedSequence.length * 1400);
-    setTimeout(() => lightColour(colour),showLoopCounter * 1500);
+function showOneElement(colour,loopCounter){
+    setTimeout(() => lightColour(colour),loopCounter * 1500);
 }
 
-let showLoopCounter = 0;
+function displayColours() {
+    // disable buttons until pattern has been shown
+    setTimeout(() => enableButton(),generatedSequence.length * 1350);
 
-function showLoopIteration(){
-    showOneElement(generatedSequence[showLoopCounter]);
-    if(showLoopCounter<generatedSequence.length){
-        showLoopCounter++;
-        showLoop();
+    // logic for displaying pattern to memorise
+    let displayColoursLoopCounter = 0;
+    displayColoursLoop();
+    function displayColoursLoop(){
+        showOneElement(generatedSequence[displayColoursLoopCounter],displayColoursLoopCounter);
+        if(displayColoursLoopCounter<generatedSequence.length){
+            displayColoursLoopCounter++;
+            displayColoursLoop();
+        }
+        selectionDone = false;
     }
-    selectionDone = false;
-
-}
-
-function showLoop(){
-    window.setTimeout(showLoopIteration(),1000);
 }
 
 function gameLoop() {
@@ -95,11 +96,11 @@ function gameLoop() {
 
     if(gameRunning) {
         if(selectionDone==true) {
-            showLoop();
-            showLoopCounter = 0;
+            displayColours();
         }
     
         if(userSequence.length == generatedSequence.length && generatedSequence.length != 0){
+            // add points if sequence is correct, and reset for next round
             disableButton();
             if(gameRunning) {
                 score++;
@@ -120,13 +121,13 @@ function gameLoop() {
 }
 
 function startGame() {
+    // set game variables then start main game loop
     generatedSequence = new Array();
     userSequence = new Array();
 
     score = 0;
     gameRunning = false;
     selectionDone = true;
-    showLoopCounter = 0;
     document.getElementById("commandDisplay").style.color = "green";
 
     generatedSequence.push(generateRandomColour());
@@ -135,7 +136,7 @@ function startGame() {
 }
 
 function gameOver() {
-
+    // update display and disable game buttons
     if(score > highScore) {
         highScore = score;
         localStorage.highScoreStorage = highScore;
@@ -144,5 +145,4 @@ function gameOver() {
     document.getElementById("commandDisplay").innerHTML = "Game Over!";
     disableButton();
     document.getElementById("commandDisplay").style.color = "red";
-
 }
