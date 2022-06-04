@@ -4,8 +4,12 @@ let userSequence = new Array();
 let score = 0;
 let gameRunning = false;
 let selectionDone = true;
-
 let highScore = 0;
+
+if(localStorage.highScoreStorage) {
+    highScore = parseInt(localStorage.highScoreStorage);
+    document.getElementById("highScore").innerHTML = "High Score: " + highScore;
+}
 
 function generateRandomColour(){
     randomNumber = Math.floor(Math.random() * 4);
@@ -135,6 +139,7 @@ function gameOver() {
 
     if(score > highScore) {
         highScore = score;
+        localStorage.highScoreStorage = highScore;
     }
     document.getElementById("highScore").innerHTML = "High Score: " + highScore;
     document.getElementById("gameOverBox").innerHTML = "Game Over";
