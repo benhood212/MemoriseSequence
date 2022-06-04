@@ -114,7 +114,7 @@ function gameLoop() {
             document.getElementById("commandDisplay").innerHTML = "Memorise!";
         }
         else {
-            document.getElementById("commandDisplay").innerHTML = "Guess!"
+            document.getElementById("commandDisplay").innerHTML = "Guess!";
         }
     }
     setDisplays();
