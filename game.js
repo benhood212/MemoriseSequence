@@ -91,7 +91,6 @@ function gameLoop() {
     }
 
     for(i=0;i<userSequence.length;i++){
-        console.log("Comparing " + generatedSequence[i] + " and " +  userSequence[i]);
         if(generatedSequence[i] != userSequence[i]){
             gameRunning = false;
             gameOver();
