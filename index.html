@@ -13,16 +13,16 @@
             </div>
             <div id="controlSection">
                 <button id="startGame" onclick="startGame()">Start Game</button>
-                <h2 id="commandDisplay"></h2>
+                <h2 id="commandDisplay">Click Start Game!</h2>
             </div>
             <div id="buttonSection">
                 <div class="row">
-                    <button id="red" onclick="redClicked()" class="colourButton">Red</button>
-                    <button id="green" onclick="greenClicked()" class="colourButton">Green</button>
+                    <button id="red" onclick="redClicked()" onmouseover="buttonHover('red')" onmouseleave="deleteBorder('red')" class="colourButton">Red</button>
+                    <button id="green" onclick="greenClicked()" onmouseover="buttonHover('green')" onmouseleave="deleteBorder('green')" class="colourButton">Green</button>
                 </div>
                 <div class="row">
-                    <button id="yellow" onclick="yellowClicked()" class="colourButton">Yellow</button>
-                    <button id="blue" onclick="blueClicked()" class="colourButton">Blue</button>
+                    <button id="yellow" onclick="yellowClicked()" onmouseover="buttonHover('yellow')" onmouseleave="deleteBorder('yellow')" class="colourButton">Yellow</button>
+                    <button id="blue" onclick="blueClicked()" onmouseover="buttonHover('blue')" onmouseleave="deleteBorder('blue')" class="colourButton">Blue</button>
                 </div>
             </div>
 

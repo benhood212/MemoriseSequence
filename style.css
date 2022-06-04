@@ -12,9 +12,6 @@
     border-radius: 10px;
 }
 
-.colourButtonEnabled:hover {
-    border-color: red;
-}
 
 #commandDisplay {
     color: green;

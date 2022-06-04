@@ -43,6 +43,15 @@ function lightBlue(){
     setTimeout(() => {document.getElementById("blue-active").setAttribute("id","blue")},1000)
 }
 
+function buttonHover(colour){
+    if(!disableButtons){
+        document.getElementById(colour).style.borderWidth = "5px";
+    }
+}
+
+function deleteBorder(colour){
+    document.getElementById(colour).style.borderWidth = "2px";
+}
 
 function redClicked(){
     if(!disableButtons) {
@@ -69,18 +78,10 @@ function blueClicked(){
 }
 
 function enableButton(){
-    let colourButtons = document.getElementsByClassName("colourButton");
-    for(int=0;i<colourButtons.length;i++){
-        colourButtons[i].setAttribute("class","colourButton colourButtonEnabled");
-    }
     disableButtons = false;
 }
 
 function disableButton(){
-    let colourButtons = document.getElementsByClassName("colourButton");
-    for(int=0;i<colourButtons.length;i++){
-        colourButtons[i].setAttribute("class","colourButton");
-    }
     disableButtons = true;
 }
 
