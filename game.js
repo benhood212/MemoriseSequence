@@ -10,11 +10,19 @@ let selectedGameMode = "";
 
 
 let disableButtons = true;
-
-if(localStorage.highScoreStorage) {
-    // retrieve highscore from storage, and update displays
-    highScore = parseInt(localStorage.highScoreStorage);
-    setDisplays();
+if(document.getElementById("gameMode").innerHTML == "Normal") {
+    if(localStorage.highScoreStorage) {
+        // retrieve highscore from storage, and update displays
+        highScore = parseInt(localStorage.highScoreStorage);
+        setDisplays();
+    }
+}
+else if(document.getElementById("gameMode").innerHTML == "3x3") {
+    if(localStorage.high3x3ScoreStorage) {
+        // retrieve highscore from storage, and update displays
+        highScore = parseInt(localStorage.high3x3ScoreStorage);
+        setDisplays();
+    }
 }
 
 function setDisplays() {
@@ -51,7 +59,6 @@ function generateRandomColour(){
 function lightColour(colour){
     // temporarily change css to show which colours are in sequence
     document.getElementById(colour).setAttribute("id",colour+"-active");
-    console.log(colour+"-active");  
     setTimeout(() => document.getElementById(colour+"-active").setAttribute("id",colour),1000);
 }
 
@@ -149,7 +156,12 @@ function gameOver() {
     // update display and disable game buttons
     if(score > highScore) {
         highScore = score;
-        localStorage.highScoreStorage = highScore;
+        if(selectedGameMode == "normal") {
+            localStorage.highScoreStorage = highScore;
+        }
+        else if(selectedGameMode == "3x3") {
+            localStorage.high3x3ScoreStorage = highScore;
+        }
     }
     setDisplays();
     document.getElementById("commandDisplay").innerHTML = "Game Over!";
