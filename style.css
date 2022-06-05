@@ -53,6 +53,26 @@
     background-color: lightblue;
 }
 
+#orange {
+    background-color: lightsalmon;
+}
+
+#lime {
+    background-color: greenyellow;
+}
+
+#purple {
+    background-color: plum;
+}
+
+#pink {
+    background-color: lightpink;
+}
+
+#darkpink {
+    background-color: rgb(238, 131, 197);
+}
+
 #red-active {
     background-color: red;
     color: white;
@@ -72,3 +92,29 @@
     background-color: blue;
     color: white;
 }
+
+#orange-active {
+    background-color: orange;
+    color: white;
+}
+
+#lime-active {
+    background-color: limegreen;
+    color: white;
+}
+
+#purple-active {
+    background-color: purple;
+    color: white;
+}
+
+#pink-active {
+    background-color: rgb(247, 101, 125);
+    color: white;
+}
+
+#darkpink-active {
+    background-color: rgb(206, 0, 127);
+    color: white;
+}
+
