@@ -11,17 +11,6 @@
     overflow: hidden;
 }
 
-@media screen and (min-width: 767px) {
-    #mainContainer {
-        width: 100%;
-    }
-
-    .colourButton {
-        width: 12%;
-        height: 12%;
-        margin: 0.5%;
-    }
-}
 
 /* button sizes */
 .colourButton {
@@ -29,6 +18,18 @@
     height: 100px;
     margin: 10px;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+    #mainContainer {
+        width: 100%;
+    }
+
+    .colourButton-3x3 {
+        width: 80px;
+        height: 80px;
+        margin: 0.5%;
+    }
 }
 
 #startGame {
@@ -122,4 +123,3 @@
     background-color: rgb(206, 0, 127);
     color: white;
 }
-
