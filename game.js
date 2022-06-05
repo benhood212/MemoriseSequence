@@ -138,18 +138,19 @@ function gameLoop() {
 
 function startGame(gameMode) {
     // set game variables then start main game loop
-    generatedSequence = new Array();
-    userSequence = new Array();
-    selectedGameMode = gameMode;
+    if(!gameRunning) {
+        generatedSequence = new Array();
+        userSequence = new Array();
+        selectedGameMode = gameMode;
 
-    score = 0;
-    gameRunning = false;
-    selectionDone = true;
-    document.getElementById("commandDisplay").style.color = "green";
+        score = 0;
+        selectionDone = true;
+        document.getElementById("commandDisplay").style.color = "green";
 
-    generatedSequence.push(generateRandomColour());
-    gameRunning=true;
-    gameLoop();
+        generatedSequence.push(generateRandomColour());
+        gameRunning=true;
+        gameLoop();
+    }
 }
 
 function gameOver() {
