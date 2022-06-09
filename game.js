@@ -31,29 +31,25 @@ function setDisplays() {
 }
 
 function generateRandomColour(){
+    let randomNumber = 0;
     if(selectedGameMode=="normal") {
         randomNumber = Math.floor(Math.random() * 4);
-        switch(randomNumber){
-            case 0: return "red";
-            case 1: return "green";
-            case 2: return "yellow";
-            case 3: return "blue";
-        }
     }
     else if(selectedGameMode = "3x3"){
         randomNumber = Math.floor(Math.random() * 9);
-        switch(randomNumber){
-            case 0: return "red";
-            case 1: return "green";
-            case 2: return "yellow";
-            case 3: return "blue";
-            case 4: return "orange";
-            case 5: return "lime";
-            case 6: return "purple";
-            case 7: return "pink";
-            case 8: return "darkpink"
-        }
     }
+    switch(randomNumber){
+        case 0: return "red";
+        case 1: return "green";
+        case 2: return "yellow";
+        case 3: return "blue";
+        case 4: return "orange";
+        case 5: return "lime";
+        case 6: return "purple";
+        case 7: return "pink";
+        case 8: return "darkpink"
+    }
+    
 }
 
 function lightColour(colour){
